@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Link
 } from "react-router-dom";
 
 import {Routes} from './router'
@@ -10,7 +11,7 @@ import {Routes} from './router'
 import { GlobalContext } from './store'
 import {Cocktail} from './types'
 
-import Logo from './components/Logo'
+import MainLogo from './components/MainLogo'
 import MainNav from './components/MainNav'
 
 /* Pages */
@@ -26,9 +27,11 @@ const App =() =>{
   return (
     <GlobalContext.Provider value= {{ cocktails, setCocktails }}>
         <div className="App flex flex-col items-center h-screen">
-          <Logo />
-          <Router>
-          <MainNav />
+        <Router>
+          <Link to={Routes.HOME_PAGE}>
+            <MainLogo />
+          </Link>
+          {/* <MainNav /> */}
             <Switch>
               <Route path={Routes.FAVORITES_PAGE}>
                 <ApproDetail />

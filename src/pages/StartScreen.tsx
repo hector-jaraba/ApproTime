@@ -24,7 +24,7 @@ const StartScreen = () =>{
     return (
         
         <div className="h-full flex flex-col">
-            <h1 className="text-xl my-4 text-purple-50 text-center">This is RANDOM coktail</h1>
+            <h1 className="text-xl my-4 text-purple-50 text-center">This is RANDOM cocktail</h1>
             <div className="flex justify-center my-4">
                 {cocktails?.map(cocktail => (
                     <CocktailItem key={cocktail.id} cocktail={cocktail} />
