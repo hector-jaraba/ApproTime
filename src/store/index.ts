@@ -1,16 +1,16 @@
 import {createContext, useContext} from 'react'
 import {Cocktail} from '../types'
 
-interface GlobalContext {
+interface GlobalState {
     cocktails?: Cocktail[],
-    updateCocktails: (cocktails: Cocktail[]) => void
+    setCocktails: (cocktails: Cocktail[]) => void
 }
 
-const context: GlobalContext = {
+const state: GlobalState = {
     cocktails: undefined,
-    updateCocktails: () => {}
+    setCocktails: () => {}
 }
 
-export const globalContext = createContext<GlobalContext>(context)
+export const GlobalContext = createContext<GlobalState>(state)
 
-export const useGlobalContext = () => useContext(globalContext)
+export const useGlobalContext = () => useContext(GlobalContext)

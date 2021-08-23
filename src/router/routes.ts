@@ -1,4 +1,5 @@
 export const Routes = {
     HOME_PAGE: '/',
-    APPRO_DETAIL: '/appro'
+    FAVORITES_PAGE: '/favorites',
+    COCKTAIL_DETAIL: '/cocktail'
   }

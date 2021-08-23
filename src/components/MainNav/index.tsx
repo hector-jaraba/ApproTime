@@ -12,7 +12,7 @@ const Render = () => (
             </li>
             <span className="mx-4">|</span>
             <li>
-                <Link to={Routes.APPRO_DETAIL}>Appro</Link>
+                <Link to={Routes.FAVORITES_PAGE}>Favorites</Link>
             </li>
         </ul>
     </nav>
