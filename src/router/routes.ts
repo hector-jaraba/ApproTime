@@ -1,5 +1,3 @@
-export const Routes = {
-    HOME_PAGE: '/',
-    FAVORITES_PAGE: '/favorites',
-    COCKTAIL_DETAIL: '/cocktail'
-  }
+export const HOME_PAGE = "/";
+export const FAVORITES_PAGE = "/favorites";
+export const COCKTAIL_DETAIL = "/cocktail/:id";

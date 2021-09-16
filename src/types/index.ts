@@ -1,1 +1,4 @@
-export * from './cocktail'
+export * from "./cocktail";
+export interface RouteWithId {
+  id: string;
+}
