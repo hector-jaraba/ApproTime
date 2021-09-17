@@ -1,26 +1,30 @@
-import React, { useEffect } from "react";
-import { useGlobalContext } from "../context";
-import { requestHandler } from "../helpers";
-import { cocktailsService } from "../services";
-import { createCocktailsFromServer } from "../models";
-import CocktailItem from "../components/CocktailItem";
+import React, { useEffect } from 'react'
+import { useGlobalContext } from '../context'
+import { requestHandler } from '../helpers'
+import { cocktailsService } from '../services'
+import { createCocktailsFromServer } from '../models'
+import CocktailItem from '../components/CocktailItem'
 const StartScreen = () => {
-  const { cocktails, setCocktails } = useGlobalContext();
+  //TODO: replace set cocktails by dispatch to state
+  //TODO: replace cocktails by use selector
+  //TODO: Refactor model creator to add isFavorite to Cokctail
+
+  const { cocktails, setCocktails } = useGlobalContext()
   const consumeService = async () => {
-    const [data] = await requestHandler(cocktailsService.getRandom);
+    const [data] = await requestHandler(cocktailsService.getRandom)
     if (data) {
-      const cocktail = createCocktailsFromServer(data);
-      setCocktails(cocktail);
+      const cocktail = createCocktailsFromServer(data)
+      setCocktails(cocktail)
     }
-  };
+  }
 
   const handleRefresh = () => {
-    consumeService();
-  };
+    consumeService()
+  }
 
   useEffect(() => {
-    consumeService();
-  }, []);
+    consumeService()
+  }, [])
   return (
     <div className="h-full flex flex-col">
       <h1 className="text-xl my-4 text-purple-50 text-center">
@@ -40,7 +44,7 @@ const StartScreen = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default StartScreen;
+export default StartScreen
