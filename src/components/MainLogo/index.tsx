@@ -1,8 +1,8 @@
-import React from "react";
-import Cocktail from "../../assets/img/Cocktail";
-import "./style.css";
+import React from 'react'
+import Cocktail from '../../assets/img/Cocktail'
+import './style.css'
 
-const Logo = () => {
+const Logo: React.FC = () => {
   return (
     <div className="Logo relative inline-block mt-4 pr-8">
       <div className="flex items-center text-purple-700">
@@ -13,6 +13,6 @@ const Logo = () => {
         <span className="glow">Open</span>
       </div>
     </div>
-  );
-};
-export default Logo;
+  )
+}
+export default Logo

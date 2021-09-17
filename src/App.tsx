@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import * as Routes from "./router";
 
 import { GlobalProvider } from "./context";
-import { Provider as StoreProvider } from 'react-redux'
-import { store } from './store'
+import { Provider as StoreProvider } from "react-redux";
+import { store } from "./store";
 import { Cocktail } from "./types";
 
 import MainLogo from "./components/MainLogo";
@@ -21,28 +21,28 @@ const App: React.FC = () => {
 
   return (
     <StoreProvider store={store}>
-    <GlobalProvider value={{ cocktails, setCocktails }}>
-      <div className="App flex flex-col items-center h-screen">
-        <Router>
-          <Link to={Routes.HOME_PAGE}>
-            <MainLogo />
-          </Link>
-           <MainNav />
-          <Switch>
-            <Route path={Routes.FAVORITES_PAGE}>
-              <ApproDetail />
-            </Route>
-            <Route path={`${Routes.COCKTAIL_DETAIL}`}>
-              <CocktailDetail />
-            </Route>
-            <Route path={Routes.HOME_PAGE}>
-              <StartScreen />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+      <GlobalProvider value={{ cocktails, setCocktails }}>
+        <div className="App flex flex-col items-center h-screen">
+          <Router>
+            <Link to={Routes.HOME_PAGE}>
+              <MainLogo />
+            </Link>
+            <MainNav />
+            <Switch>
+              <Route path={Routes.FAVORITES_PAGE}>
+                <ApproDetail />
+              </Route>
+              <Route path={`${Routes.COCKTAIL_DETAIL}`}>
+                <CocktailDetail />
+              </Route>
+              <Route path={Routes.HOME_PAGE}>
+                <StartScreen />
+              </Route>
+            </Switch>
+          </Router>
+        </div>
       </GlobalProvider>
-      </StoreProvider>
+    </StoreProvider>
   );
 };
 

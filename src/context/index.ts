@@ -1,21 +1,21 @@
-import { createContext, useContext } from "react";
-import { Cocktail } from "../types";
+import { createContext, useContext } from 'react'
+import { Cocktail } from '../types'
 
 interface GlobalState {
-  cocktails: Cocktail[];
-  setCocktails: (cocktails: Cocktail[]) => void;
+  cocktails: Cocktail[]
+  setCocktails: (cocktails: Cocktail[]) => void
 }
 
 const state: GlobalState = {
   cocktails: [],
   setCocktails: () => {},
-};
+}
 
-const GlobalContext = createContext<GlobalState>(state);
+const globalContext = createContext<GlobalState>(state)
 
-export const GlobalProvider = GlobalContext.Provider;
+export const GlobalProvider = globalContext.Provider
 
-export const useGlobalContext = () => useContext(GlobalContext);
+export const useGlobalContext = () => useContext(globalContext)
 
 // const handler = {
 //   getCocktail: (state, action) => ({

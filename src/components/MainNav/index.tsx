@@ -1,8 +1,8 @@
-import React from "react";
-import * as Routes from "../../router";
-import { Link } from "react-router-dom";
+import React from 'react'
+import * as Routes from '../../router'
+import { Link } from 'react-router-dom'
 
-const Render = () => (
+const Render: React.FC = () => (
   <nav>
     <ul className="flex text-white my-5">
       <li>
@@ -14,6 +14,6 @@ const Render = () => (
       </li>
     </ul>
   </nav>
-);
+)
 
-export default Render;
+export default Render
