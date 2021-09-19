@@ -1,47 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { CocktailsState } from '../store'
+import { favoritesList as favoritesListSelector } from '../store'
 import { requestHandler } from '../helpers'
 import { cocktailsService } from '../services'
 import { createCocktailsFromServer } from '../models'
 import { Cocktail } from '../types'
 import CocktailItem from '../components/CocktailItem'
+import { useCocktailDetail } from '../hooks'
 
 const ApproDetail: React.FC = () => {
-  //TODO: Refactor this using state and selectors
-  const favorites = useSelector(favoritesList)
-  const [favorites, setFavorites] = useState<Cocktail[]>([])
-
-  const favoritesList = useSelector<CocktailsState, string[]>(
-    (state) => state.favorites
-  )
-
-  //TODO: REMOVE THIS
-  const consumeService = async () => {
-    const favoriteCocktails = favoritesList.map(async (id) => {
-      const [data] = await requestHandler(() => cocktailsService.getById(id))
-      if (data) {
-        return createCocktailsFromServer(data)
-      }
-    })
-    const resolvedPromises = await Promise.all(favoriteCocktails)
-    const result = resolvedPromises
-      .map((item) => item?.[0])
-      .filter((item) => typeof item !== 'undefined') as Cocktail[]
-    setFavorites(result)
-  }
-
-  //TODO: REMOVE THIS
-  useEffect(() => {
-    if (!favorites.length) {
-      consumeService()
-    }
-  }, [])
-
+  const favorites = useSelector(favoritesListSelector)
   const renderFavoriteList = () =>
-    favorites.map((cocktail) => (
-      <CocktailItem key={cocktail.id} cocktail={cocktail} />
-    ))
+    favorites.map((cocktail) => {
+      return <CocktailItem key={cocktail.id} cocktail={cocktail} />
+    })
   const renderEmpty = () => (
     <div className="text-white">
       <h3>Oooh noo your list is empty!</h3>
@@ -50,7 +22,7 @@ const ApproDetail: React.FC = () => {
   )
 
   const renderFavoriteOrEmpty = () =>
-    !!favorites.length ? renderFavoriteList() : renderEmpty()
+    favorites.length ? renderFavoriteList() : renderEmpty()
 
   const render = () => <div>{renderFavoriteOrEmpty()}</div>
 

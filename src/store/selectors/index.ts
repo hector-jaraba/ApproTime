@@ -1,10 +1,12 @@
 import { CocktailsState } from '../types'
 
-export const favoritesList = ({ favorites }: CocktailsState) => favorites
+export const randomCocktail = ({ randomCocktail }: CocktailsState) =>
+  randomCocktail
+
+export const favoritesList = ({ cocktails, favorites }: CocktailsState) =>
+  cocktails.filter((cocktail) => favorites.includes(cocktail.id))
 
 export const isFavorite =
   (id: string) =>
   ({ favorites }: CocktailsState) =>
     favorites.includes(id)
-
-//TODO: Coktail list and cocktail by id

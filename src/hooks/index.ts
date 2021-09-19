@@ -19,7 +19,7 @@ export const useCocktailDetail = (id: string) => {
 
   const handleFavorite = () => {
     const action = !isFavorite ? addFavorite : removeFavorite
-    dispatch(action(id))
+    action(id)(dispatch)
   }
 
   const getCocktail = async () => {

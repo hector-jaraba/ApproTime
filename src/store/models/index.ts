@@ -1,6 +1,8 @@
+import { getCocktails, getFavorites } from '../../localStorage'
 import { CocktailsState } from '../types'
 
 export const initialState: CocktailsState = {
-  favorites: [],
-  cocktails: [],
+  favorites: getFavorites() ?? [],
+  cocktails: getCocktails() ?? [],
+  randomCocktail: undefined,
 }

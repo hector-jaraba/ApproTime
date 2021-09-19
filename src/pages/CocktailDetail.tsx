@@ -1,25 +1,20 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import CocktailItem from '../components/CocktailItem'
 import { RouteWithId } from '../types'
 import { useCocktailDetail } from '../hooks'
 
-const CocktailDetail = () => {
+const CocktailDetail: React.FC = () => {
   const { id } = useParams<RouteWithId>()
-  const { handleFavorite, isFavorite, cocktail } = useCocktailDetail(id)
+  const { cocktail } = useCocktailDetail(id)
   if (!cocktail) {
     // TODO: empty case
-    return null
+    return <div>no cocktail</div>
   }
+
   return (
     <div className="flex justify-center my-4 py-10">
-      <CocktailItem
-        key={id}
-        cocktail={cocktail}
-        isDetail={true}
-        isFavorite={isFavorite}
-        handleFavorite={handleFavorite}
-      />
+      <CocktailItem key={id} cocktail={cocktail} isDetail={true} />
     </div>
   )
 }

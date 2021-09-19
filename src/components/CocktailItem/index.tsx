@@ -1,20 +1,15 @@
 import React, { useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useCocktailDetail } from '../../hooks'
 import { COCKTAIL_DETAIL } from '../../router'
 import { Cocktail, Ingredient } from '../../types'
 interface Props {
   cocktail: Cocktail
   isDetail?: boolean
-  isFavorite?: boolean
-  handleFavorite: (id: string) => void
 }
 
-const CocktailItem: React.FC<Props> = ({
-  cocktail,
-  isDetail = false,
-  isFavorite = false,
-  handleFavorite,
-}) => {
+const CocktailItem: React.FC<Props> = ({ cocktail, isDetail = false }) => {
+  const { handleFavorite, isFavorite } = useCocktailDetail(cocktail.id)
   const renderDetail = useCallback(
     () => (
       <>
@@ -52,7 +47,7 @@ const CocktailItem: React.FC<Props> = ({
   const render = isDetail ? renderDetail : renderLink
 
   const favoriteClassName = isFavorite ? 'text-red-500' : ''
-  const handleClick = () => handleFavorite(cocktail.id)
+  const handleClick = () => handleFavorite()
 
   return (
     <div className="relative w-80 bg-white flex flex-col items-center rounded-md overflow-hidden mt-4">

@@ -14,6 +14,11 @@ const prodConfig = {
 }
 
 // TODO: check dev or prod config
+// if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+//   // dev code
+// } else {
+//   // production code
+// }
 
 // https://vitejs.dev/config/
 export default defineConfig(devConfig)
