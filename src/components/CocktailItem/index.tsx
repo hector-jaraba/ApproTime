@@ -1,30 +1,15 @@
 import React, { useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useCocktailDetail } from '../../hooks'
 import { COCKTAIL_DETAIL } from '../../router'
 import { Cocktail, Ingredient } from '../../types'
-import { ADD_FAVORITE, REMOVE_FAVORITE, CocktailsState } from '../../store'
-import { useDispatch, useSelector } from 'react-redux'
-
 interface Props {
   cocktail: Cocktail
   isDetail?: boolean
 }
 
 const CocktailItem: React.FC<Props> = ({ cocktail, isDetail = false }) => {
-  const dispatch = useDispatch()
-  const favoritesList = useSelector<CocktailsState, string[]>(
-    (state) => state.favorites
-  )
-
-  const isFavorite = favoritesList.includes(cocktail.id)
-  const favorite = useRef(isFavorite)
-
-  const handleFavorite = () => {
-    favorite.current = !favorite.current
-    const type = favorite.current ? ADD_FAVORITE : REMOVE_FAVORITE
-    dispatch({ type, payload: cocktail.id })
-  }
-
+  const { handleFavorite, isFavorite } = useCocktailDetail(cocktail.id)
   const renderDetail = useCallback(
     () => (
       <>
@@ -61,13 +46,14 @@ const CocktailItem: React.FC<Props> = ({ cocktail, isDetail = false }) => {
 
   const render = isDetail ? renderDetail : renderLink
 
+  const favoriteClassName = isFavorite ? 'text-red-500' : ''
+  const handleClick = () => handleFavorite()
+
   return (
     <div className="relative w-80 bg-white flex flex-col items-center rounded-md overflow-hidden mt-4">
       <div
-        className={`absolute favorite right-0 top-0 w-6 fill-current cursor-pointer mt-2 mr-2 ${
-          favorite.current ? 'text-red-500' : ''
-        }`}
-        onClick={handleFavorite}
+        className={`absolute favorite right-0 top-0 w-6 fill-current cursor-pointer mt-2 mr-2 ${favoriteClassName}`}
+        onClick={handleClick}
       >
         <svg className="heart" viewBox="0 0 32 29.6">
           <path

@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-import * as Routes from "./router";
+import * as Routes from './router'
 
-import { GlobalProvider } from "./context";
-import { Provider as StoreProvider } from "react-redux";
-import { store } from "./store";
-import { Cocktail } from "./types";
+import { GlobalProvider } from './context'
+import { Provider as StoreProvider } from 'react-redux'
+import store from './store'
+import { Cocktail } from './types'
 
-import MainLogo from "./components/MainLogo";
-import MainNav from "./components/MainNav";
+import MainLogo from './components/MainLogo'
+import MainNav from './components/MainNav'
 
 /* Pages */
-import StartScreen from "./pages/StartScreen";
-import ApproDetail from "./pages/Favorites";
-import CocktailDetail from "./pages/CocktailDetail";
+import StartScreen from './pages/StartScreen'
+import ApproDetail from './pages/Favorites'
+import CocktailDetail from './pages/CocktailDetail'
 
 const App: React.FC = () => {
-  const [cocktails, setCocktails] = useState<Cocktail[]>([]);
+  const [cocktails, setCocktails] = useState<Cocktail[]>([])
 
   return (
     <StoreProvider store={store}>
@@ -43,7 +43,7 @@ const App: React.FC = () => {
         </div>
       </GlobalProvider>
     </StoreProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
