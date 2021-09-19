@@ -5,6 +5,7 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   GET_RANDOM_COCKTAIL,
+  RESET_RANDOM_COCKTAIL,
 } from '../actionTypes'
 import { Dispatch, FavoritePayload, CocktailPayload } from '../types'
 
@@ -18,6 +19,10 @@ export const getRandomCocktail = () => async (dispatch: Dispatch) => {
     }
     dispatch({ type: GET_RANDOM_COCKTAIL, payload })
   }
+}
+
+export const resetRandomCocktail = () => async (dispatch: Dispatch) => {
+  dispatch({ type: RESET_RANDOM_COCKTAIL })
 }
 
 export const addFavorite = (id: string) => (dispatch: Dispatch) => {
