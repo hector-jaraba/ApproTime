@@ -3,6 +3,7 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   GET_RANDOM_COCKTAIL,
+  RESET_RANDOM_COCKTAIL,
 } from '../actionTypes'
 import { initialState } from '../models'
 import {
@@ -20,6 +21,13 @@ const getRandomCocktail: Reducer = (state, action) => {
       (action.payload as CocktailPayload).cocktail,
     ],
     randomCocktail: (action.payload as CocktailPayload).cocktail,
+  }
+}
+
+const resetRandomCocktail: Reducer = (state, action) => {
+  return {
+    ...state,
+    randomCocktail: undefined,
   }
 }
 
@@ -64,6 +72,7 @@ const HANDLERS: Record<string, Reducer> = {
   [ADD_FAVORITE]: addFavorite,
   [REMOVE_FAVORITE]: removeFavorite,
   [GET_RANDOM_COCKTAIL]: getRandomCocktail,
+  [RESET_RANDOM_COCKTAIL]: resetRandomCocktail,
 }
 
 const cocktailsReducer = (state = initialState, action?: CocktailsAction) => {

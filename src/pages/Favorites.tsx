@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { favoritesList as favoritesListSelector } from '../store'
-import { requestHandler } from '../helpers'
-import { cocktailsService } from '../services'
-import { createCocktailsFromServer } from '../models'
 import { Cocktail } from '../types'
 import CocktailItem from '../components/CocktailItem'
-import { useCocktailDetail } from '../hooks'
 
 const ApproDetail: React.FC = () => {
-  const favorites = useSelector(favoritesListSelector)
+  const favorites: Cocktail[] = useSelector(favoritesListSelector)
   const renderFavoriteList = () =>
     favorites.map((cocktail) => {
       return <CocktailItem key={cocktail.id} cocktail={cocktail} />
@@ -24,7 +20,7 @@ const ApproDetail: React.FC = () => {
   const renderFavoriteOrEmpty = () =>
     favorites.length ? renderFavoriteList() : renderEmpty()
 
-  const render = () => <div>{renderFavoriteOrEmpty()}</div>
+  const render = () => <div className="pb-10">{renderFavoriteOrEmpty()}</div>
 
   return render()
 }
