@@ -52,9 +52,9 @@ const CocktailItem: React.FC<Props> = ({ cocktail, isDetail = false }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, translateY: 0 }}
-      animate={{ opacity: 1, translateY: 20 }}
-      exit={{ opacity: 0, translateY: 0 }}
+      initial={{ opacity: 0, translateY: -20 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      exit={{ opacity: 0, translateY: -20 }}
       transition={{ duration: 0.5 }}
     >
       <div className="relative w-80 bg-white flex flex-col items-center rounded-md overflow-hidden mt-4">
@@ -69,8 +69,12 @@ const CocktailItem: React.FC<Props> = ({ cocktail, isDetail = false }) => {
             />
           </svg>
         </div>
-        <figure className="w-56 h-56 overflow-hidden center mt-4">
-          <img src={cocktail.image} alt={cocktail.name} />
+        <figure className="flex justify-center w-56 h-56 overflow-hidden center mt-4">
+          <img
+            loading="lazy"
+            src={`${cocktail.image}/preview`}
+            alt={cocktail.name}
+          />
         </figure>
         <div className="w-full">
           <h3 className="text-2xl text-indigo-400 text-center my-4">

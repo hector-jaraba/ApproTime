@@ -38,10 +38,8 @@ const StartScreen: React.FC = () => {
   }, [])
 
   return (
-    <div className="h-full flex flex-col">
-      <div className="flex justify-center mb-4 pb-4">
-        {renderCocktailOrEmpty()}
-      </div>
+    <div className="h-full flex flex-col justify-center">
+      <div className="flex mb-4 pb-4">{renderCocktailOrEmpty()}</div>
       <div className="relative pt-14">
         <button
           className="px-4 py-4 text-indigo-200 bg-gray-900 fixed bottom-0 left-0 w-full cursor-pointer transition-all hover:bg-indigo-900"

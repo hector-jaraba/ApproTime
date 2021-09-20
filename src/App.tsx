@@ -22,7 +22,7 @@ const App: React.FC = () => {
   return (
     <StoreProvider store={store}>
       <GlobalProvider value={{ cocktails, setCocktails }}>
-        <div className="App flex flex-col items-center min-h-screen">
+        <div className="App flex flex-col items-center h-screen">
           <Router>
             <Link to={Routes.HOME_PAGE}>
               <MainLogo />

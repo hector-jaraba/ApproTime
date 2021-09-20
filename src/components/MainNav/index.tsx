@@ -1,16 +1,30 @@
 import React from 'react'
 import * as Routes from '../../router'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Render: React.FC = () => (
   <nav>
     <ul className="flex text-white my-5">
       <li>
-        <Link to={Routes.HOME_PAGE}>Home</Link>
+        <NavLink
+          to={Routes.HOME_PAGE}
+          className="relative transition-all py-2 px-2"
+          activeClassName="text-pink-600"
+          exact
+        >
+          Home
+        </NavLink>
       </li>
       <span className="mx-4">|</span>
       <li>
-        <Link to={Routes.FAVORITES_PAGE}>Favorites</Link>
+        <NavLink
+          to={Routes.FAVORITES_PAGE}
+          className="relative transition-all py-2 px-2"
+          activeClassName="text-pink-600"
+          exact
+        >
+          Favorites
+        </NavLink>
       </li>
     </ul>
   </nav>
