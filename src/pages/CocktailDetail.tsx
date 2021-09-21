@@ -19,7 +19,7 @@ const CocktailDetail: React.FC = () => {
       <CocktailItem key={id} cocktail={cocktail} isDetail={true} />
       <div className="mt-10 text-center">
         <button
-          className="text-white bg-purple-900 py-2 px-4 rounded-md transition-all hover:bg-purple-600"
+          className="text-white bg-indigo-900 py-2 px-4 rounded-md transition-all hover:bg-indigo-600"
           onClick={history.goBack}
         >
           👈 go back

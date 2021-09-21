@@ -4,7 +4,7 @@ export const BaseLoader: React.FC = () => {
   return (
     <div className="flex justify-center items-center w-full h-full">
       <svg
-        className="animate-spin -ml-1 mr-3 w-8 h-8 text-purple-600"
+        className="animate-spin -ml-1 mr-3 w-8 h-8 text-indigo-600"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

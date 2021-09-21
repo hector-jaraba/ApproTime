@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion'
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { useCocktailDetail } from '../../hooks'
 import { COCKTAIL_DETAIL } from '../../router'
 import { Cocktail, Ingredient } from '../../types'
+
+import { ReactComponent as HeartSvg } from '../../assets/img/heart.svg'
+
 interface Props {
   cocktail: Cocktail
   isDetail?: boolean
@@ -59,15 +62,12 @@ const CocktailItem: React.FC<Props> = ({ cocktail, isDetail = false }) => {
     >
       <div className="relative w-80 bg-white flex flex-col items-center rounded-md overflow-hidden mt-4">
         <div
-          className={`absolute favorite right-0 top-0 w-6 fill-current cursor-pointer mt-2 mr-2 transition duration-200 ea ${favoriteClassName}`}
+          className={`absolute favorite right-0 top-0 w-6 cursor-pointer mt-2 mr-2 transition`}
           onClick={handleClick}
         >
-          <svg className="heart" viewBox="0 0 32 29.6">
-            <path
-              d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-          c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"
-            />
-          </svg>
+          <HeartSvg
+            className={`outline-none duration-200 fill-current ${favoriteClassName}`}
+          />
         </div>
         <figure className="flex justify-center w-56 h-56 overflow-hidden center mt-4">
           <img

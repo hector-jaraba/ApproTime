@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import eslintPlugin from 'vite-plugin-eslint'
-import svgLoader from 'vite-svg-loader'
+import svgrPlugin from 'vite-plugin-svgr'
 
-const commonPluggins = [svgLoader()]
+const commonPluggins = [svgrPlugin()]
 
 const devConfig = {
   plugins: [...commonPluggins, reactRefresh()],
