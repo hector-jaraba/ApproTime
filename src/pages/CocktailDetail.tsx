@@ -1,16 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import CocktailItem from '../components/CocktailItem'
 import { RouteWithId } from '../types'
-import { useCocktailDetail } from '../hooks'
 import BaseLoader from '../components/BaseLoader'
+import { useSelector } from 'react-redux'
+import { cocktailDetail } from '../store'
+import { requestHandler } from '../helpers'
+import API from '../services'
+import { createCocktailsFromServer } from '../models'
 
 const CocktailDetail: React.FC = () => {
   const { id } = useParams<RouteWithId>()
   const history = useHistory()
-  const { cocktail } = useCocktailDetail(id)
+  const [cocktail, setCocktail] = useState(useSelector(cocktailDetail(id)))
+
+  const getCocktail = async () => {
+    const [data] = await requestHandler(() => API.cocktails.getById(id))
+    if (data) {
+      const [firstCocktail] = createCocktailsFromServer(data)
+      setCocktail(firstCocktail)
+    }
+  }
+
+  useEffect(() => {
+    // TODO: move to action
+    if (!cocktail) {
+      getCocktail()
+    }
+  }, [])
+
   if (!cocktail) {
-    // TODO: empty case
     return <BaseLoader />
   }
 

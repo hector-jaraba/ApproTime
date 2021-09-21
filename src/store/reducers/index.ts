@@ -5,7 +5,7 @@ import {
   GET_RANDOM_COCKTAIL,
   RESET_RANDOM_COCKTAIL,
 } from '../actionTypes'
-import { initialState } from '../models'
+import { getInitialState } from '../models'
 import {
   CocktailPayload,
   CocktailsAction,
@@ -14,12 +14,13 @@ import {
 } from '../types'
 
 const getRandomCocktail: Reducer = (state, action) => {
+  const cocktail = (action.payload as CocktailPayload).cocktail
+  const isCocktailExiting = state.cocktails.find((e) => e.id === cocktail.id)
   return {
     ...state,
-    cocktails: [
-      ...state.cocktails,
-      (action.payload as CocktailPayload).cocktail,
-    ],
+    cocktails: isCocktailExiting
+      ? state.cocktails
+      : [...state.cocktails, cocktail],
     randomCocktail: (action.payload as CocktailPayload).cocktail,
   }
 }
@@ -75,7 +76,10 @@ const HANDLERS: Record<string, Reducer> = {
   [RESET_RANDOM_COCKTAIL]: resetRandomCocktail,
 }
 
-const cocktailsReducer = (state = initialState, action?: CocktailsAction) => {
+const cocktailsReducer = (
+  state = getInitialState(),
+  action?: CocktailsAction
+) => {
   if (action) {
     return HANDLERS[action.type as string]?.(state, action) ?? state
   }

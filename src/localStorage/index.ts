@@ -1,9 +1,11 @@
 import { Cocktail } from '../types'
 
-const FAVORITES = 'favorites'
-const COCKTAILS = 'cocktails'
+enum StorageKeys {
+  FAVORITES = 'favorites',
+  COCKTAILS = 'cocktails',
+}
 
-const getLocalStorageItem = <T>(name: string) => {
+const getLocalStorageItem = <T>(name: StorageKeys) => {
   const item = localStorage.getItem(name)
   if (typeof item === 'string') {
     return JSON.parse(item) as T
@@ -12,17 +14,17 @@ const getLocalStorageItem = <T>(name: string) => {
 }
 
 export const getFavorites = () => {
-  return getLocalStorageItem<string[]>(FAVORITES)
+  return getLocalStorageItem<string[]>(StorageKeys.FAVORITES)
 }
 
 export const saveFavorites = (favorites: string[]) => {
-  localStorage.setItem(FAVORITES, JSON.stringify(favorites))
+  localStorage.setItem(StorageKeys.FAVORITES, JSON.stringify(favorites))
 }
 
 export const getCocktails = () => {
-  return getLocalStorageItem<Cocktail[]>(COCKTAILS)
+  return getLocalStorageItem<Cocktail[]>(StorageKeys.COCKTAILS)
 }
 
 export const saveCocktails = (cocktails: Cocktail[]) => {
-  localStorage.setItem(COCKTAILS, JSON.stringify(cocktails))
+  localStorage.setItem(StorageKeys.COCKTAILS, JSON.stringify(cocktails))
 }

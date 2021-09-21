@@ -1,6 +1,6 @@
 import { requestHandler } from '../../helpers'
 import { createCocktailsFromServer } from '../../models'
-import { cocktailsService } from '../../services'
+import API from '../../services'
 import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
@@ -10,7 +10,7 @@ import {
 import { Dispatch, FavoritePayload, CocktailPayload } from '../types'
 
 export const getRandomCocktail = () => async (dispatch: Dispatch) => {
-  const [data] = await requestHandler(cocktailsService.getRandom)
+  const [data] = await requestHandler(API.cocktails.getRandom)
   if (data) {
     const [cocktail] = createCocktailsFromServer(data)
 

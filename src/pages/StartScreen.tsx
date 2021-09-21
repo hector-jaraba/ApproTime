@@ -11,7 +11,7 @@ import BaseLoader from '../components/BaseLoader'
 
 const StartScreen: React.FC = () => {
   const dispatch = useDispatch()
-  const cocktail: Cocktail = useSelector(randomCocktailSelector)
+  const cocktail: Cocktail | undefined = useSelector(randomCocktailSelector)
   const renderCocktail = (cocktail: Cocktail) => {
     return <CocktailItem key={cocktail.id} cocktail={cocktail} />
   }
