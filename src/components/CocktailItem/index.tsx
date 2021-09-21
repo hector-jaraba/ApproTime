@@ -74,6 +74,8 @@ const CocktailItem: React.FC<Props> = ({ cocktail, isDetail = false }) => {
             loading="lazy"
             src={`${cocktail.image}/preview`}
             alt={cocktail.name}
+            height="224"
+            width="224"
           />
         </figure>
         <div className="w-full">

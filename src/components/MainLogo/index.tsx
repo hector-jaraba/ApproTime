@@ -7,7 +7,7 @@ const Logo: React.FC = () => {
     <div className="Logo relative inline-block mt-4">
       <div className="flex items-center text-indigo-400">
         <figure className="w-20 h-20">
-          <img src={CocktailSvg} alt="logo" />
+          <img src={CocktailSvg} alt="logo" height="80" width="80" />
         </figure>
         <h2 className="text-3xl mb-3 mx-2 font-sans">ApproTime</h2>
       </div>
