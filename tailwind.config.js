@@ -9,6 +9,11 @@ module.exports = {
       fontFamily: {
         sans: ['"Exo 2"'],
       },
+      colors: {
+        dark: {
+          200: '#212020',
+        },
+      },
     },
   },
   variants: {},

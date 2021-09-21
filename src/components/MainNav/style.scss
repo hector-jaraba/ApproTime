@@ -1,0 +1,15 @@
+.active {
+  height: 100%;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.5s;
+}
+
+.home ~ .active {
+  left: 0;
+  width: 74.39px;
+}
+
+.favorites ~ .active {
+  left: 74.39px;
+  width: 99.72px;
+}
